@@ -61,4 +61,6 @@ php artisan key:generate
 
 php artisan migrate
 
- 
+## 7, done
+
+access bookstack on web browser , uri http://<NAS_host_ip>:9080 
