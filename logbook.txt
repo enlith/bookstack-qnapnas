@@ -1,0 +1,144 @@
+[/share/bookstack/BookStack/storage] # docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                              NAMES
+8eb42c943c9c   bookstack_app     "/app/dev/docker/ent…"   46 minutes ago   Up 46 minutes   0.0.0.0:9080->80/tcp               bookstack_app_1
+385e4528169a   node:alpine       "/app/dev/docker/ent…"   46 minutes ago   Up 46 minutes                                      bookstack_node_1
+1e1da2780afa   mysql:8           "docker-entrypoint.s…"   46 minutes ago   Up 46 minutes   3306/tcp, 33060/tcp                bookstack_db_1
+9160b5a774f4   mailhog/mailhog   "MailHog"                46 minutes ago   Up 46 minutes   1025/tcp, 0.0.0.0:9025->8025/tcp   bookstack_mailhog_1
+[/share/bookstack/BookStack/storage] # docker exec -it 8eb42c943c9c bash
+root@8eb42c943c9c:/app# php artisan key:generate
+**************************************
+*     Application In Production!     *
+**************************************
+
+ Do you really wish to run this command? (yes/no) [no]:
+ > yes
+
+Application key set successfully.
+root@8eb42c943c9c:/app# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 14:44 ?        00:00:00 apache2 -DFOREGROUND
+www-data    70     1  0 14:45 ?        00:00:00 apache2 -DFOREGROUND
+www-data    71     1  0 14:45 ?        00:00:00 apache2 -DFOREGROUND
+www-data    72     1  0 14:45 ?        00:00:00 apache2 -DFOREGROUND
+www-data    73     1  0 14:45 ?        00:00:00 apache2 -DFOREGROUND
+www-data    74     1  0 14:45 ?        00:00:00 apache2 -DFOREGROUND
+www-data    75     1  0 14:45 ?        00:00:00 apache2 -DFOREGROUND
+root        76     0  0 15:31 pts/0    00:00:00 bash
+root        92    76  0 15:33 pts/0    00:00:00 ps -ef
+root@8eb42c943c9c:/app# php artisan migrate
+**************************************
+*     Application In Production!     *
+**************************************
+
+ Do you really wish to run this command? (yes/no) [no]:
+ > yes
+
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (0.79 seconds)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (0.42 seconds)
+Migrating: 2015_07_12_114933_create_books_table
+Migrated:  2015_07_12_114933_create_books_table (0.07 seconds)
+Migrating: 2015_07_12_190027_create_pages_table
+Migrated:  2015_07_12_190027_create_pages_table (0.09 seconds)
+Migrating: 2015_07_13_172121_create_images_table
+Migrated:  2015_07_13_172121_create_images_table (0.18 seconds)
+Migrating: 2015_07_27_172342_create_chapters_table
+Migrated:  2015_07_27_172342_create_chapters_table (0.07 seconds)
+Migrating: 2015_08_08_200447_add_users_to_entities
+Migrated:  2015_08_08_200447_add_users_to_entities (0.37 seconds)
+Migrating: 2015_08_09_093534_create_page_revisions_table
+Migrated:  2015_08_09_093534_create_page_revisions_table (0.09 seconds)
+Migrating: 2015_08_16_142133_create_activities_table
+Migrated:  2015_08_16_142133_create_activities_table (0.2 seconds)
+Migrating: 2015_08_29_105422_add_roles_and_permissions
+Migrated:  2015_08_29_105422_add_roles_and_permissions (4.05 seconds)
+Migrating: 2015_08_30_125859_create_settings_table
+Migrated:  2015_08_30_125859_create_settings_table (0.55 seconds)
+Migrating: 2015_08_31_175240_add_search_indexes
+Migrated:  2015_08_31_175240_add_search_indexes (0 seconds)
+Migrating: 2015_09_04_165821_create_social_accounts_table
+Migrated:  2015_09_04_165821_create_social_accounts_table (0.57 seconds)
+Migrating: 2015_09_05_164707_add_email_confirmation_table
+Migrated:  2015_09_05_164707_add_email_confirmation_table (0.49 seconds)
+Migrating: 2015_11_21_145609_create_views_table
+Migrated:  2015_11_21_145609_create_views_table (0.16 seconds)
+Migrating: 2015_11_26_221857_add_entity_indexes
+Migrated:  2015_11_26_221857_add_entity_indexes (2.14 seconds)
+Migrating: 2015_12_05_145049_fulltext_weighting
+Migrated:  2015_12_05_145049_fulltext_weighting (0 seconds)
+Migrating: 2015_12_07_195238_add_image_upload_types
+Migrated:  2015_12_07_195238_add_image_upload_types (0.29 seconds)
+Migrating: 2015_12_09_195748_add_user_avatars
+Migrated:  2015_12_09_195748_add_user_avatars (0.07 seconds)
+Migrating: 2016_01_11_210908_add_external_auth_to_users
+Migrated:  2016_01_11_210908_add_external_auth_to_users (0.28 seconds)
+Migrating: 2016_02_25_184030_add_slug_to_revisions
+Migrated:  2016_02_25_184030_add_slug_to_revisions (0.44 seconds)
+Migrating: 2016_02_27_120329_update_permissions_and_roles
+Migrated:  2016_02_27_120329_update_permissions_and_roles (2.53 seconds)
+Migrating: 2016_02_28_084200_add_entity_access_controls
+Migrated:  2016_02_28_084200_add_entity_access_controls (1.39 seconds)
+Migrating: 2016_03_09_203143_add_page_revision_types
+Migrated:  2016_03_09_203143_add_page_revision_types (0.24 seconds)
+Migrating: 2016_03_13_082138_add_page_drafts
+Migrated:  2016_03_13_082138_add_page_drafts (0.25 seconds)
+Migrating: 2016_03_25_123157_add_markdown_support
+Migrated:  2016_03_25_123157_add_markdown_support (0.21 seconds)
+Migrating: 2016_04_09_100730_add_view_permissions_to_roles
+Migrated:  2016_04_09_100730_add_view_permissions_to_roles (0.73 seconds)
+Migrating: 2016_04_20_192649_create_joint_permissions_table
+Migrated:  2016_04_20_192649_create_joint_permissions_table (1.73 seconds)
+Migrating: 2016_05_06_185215_create_tags_table
+Migrated:  2016_05_06_185215_create_tags_table (0.59 seconds)
+Migrating: 2016_07_07_181521_add_summary_to_page_revisions
+Migrated:  2016_07_07_181521_add_summary_to_page_revisions (0.12 seconds)
+Migrating: 2016_09_29_101449_remove_hidden_roles
+Migrated:  2016_09_29_101449_remove_hidden_roles (0.66 seconds)
+Migrating: 2016_10_09_142037_create_attachments_table
+Migrated:  2016_10_09_142037_create_attachments_table (0.64 seconds)
+Migrating: 2017_01_21_163556_create_cache_table
+Migrated:  2017_01_21_163556_create_cache_table (0.36 seconds)
+Migrating: 2017_01_21_163602_create_sessions_table
+Migrated:  2017_01_21_163602_create_sessions_table (0.32 seconds)
+Migrating: 2017_03_19_091553_create_search_index_table
+Migrated:  2017_03_19_091553_create_search_index_table (0.68 seconds)
+Migrating: 2017_04_20_185112_add_revision_counts
+Migrated:  2017_04_20_185112_add_revision_counts (0.24 seconds)
+Migrating: 2017_07_02_152834_update_db_encoding_to_ut8mb4
+Migrated:  2017_07_02_152834_update_db_encoding_to_ut8mb4 (0 seconds)
+Migrating: 2017_08_01_130541_create_comments_table
+Migrated:  2017_08_01_130541_create_comments_table (0.6 seconds)
+Migrating: 2017_08_29_102650_add_cover_image_display
+Migrated:  2017_08_29_102650_add_cover_image_display (0.05 seconds)
+Migrating: 2018_07_15_173514_add_role_external_auth_id
+Migrated:  2018_07_15_173514_add_role_external_auth_id (0.15 seconds)
+Migrating: 2018_08_04_115700_create_bookshelves_table
+Migrated:  2018_08_04_115700_create_bookshelves_table (3.44 seconds)
+Migrating: 2019_07_07_112515_add_template_support
+Migrated:  2019_07_07_112515_add_template_support (0.16 seconds)
+Migrating: 2019_08_17_140214_add_user_invites_table
+Migrated:  2019_08_17_140214_add_user_invites_table (0.37 seconds)
+Migrating: 2019_12_29_120917_add_api_auth
+Migrated:  2019_12_29_120917_add_api_auth (0.61 seconds)
+Migrating: 2020_08_04_111754_drop_joint_permissions_id
+Migrated:  2020_08_04_111754_drop_joint_permissions_id (1.18 seconds)
+Migrating: 2020_08_04_131052_remove_role_name_field
+Migrated:  2020_08_04_131052_remove_role_name_field (0.3 seconds)
+Migrating: 2020_09_19_094251_add_activity_indexes
+Migrated:  2020_09_19_094251_add_activity_indexes (0.43 seconds)
+Migrating: 2020_09_27_210059_add_entity_soft_deletes
+Migrated:  2020_09_27_210059_add_entity_soft_deletes (0.41 seconds)
+Migrating: 2020_09_27_210528_create_deletions_table
+Migrated:  2020_09_27_210528_create_deletions_table (0.89 seconds)
+Migrating: 2020_11_07_232321_simplify_activities_table
+Migrated:  2020_11_07_232321_simplify_activities_table (1.06 seconds)
+Migrating: 2020_12_30_173528_add_owned_by_field_to_entities
+Migrated:  2020_12_30_173528_add_owned_by_field_to_entities (1.62 seconds)
+Migrating: 2021_01_30_225441_add_settings_type_column
+Migrated:  2021_01_30_225441_add_settings_type_column (0.05 seconds)
+Migrating: 2021_03_08_215138_add_user_slug
+Migrated:  2021_03_08_215138_add_user_slug (0.31 seconds)
+Migrating: 2021_05_15_173110_create_favourites_table
+Migrated:  2021_05_15_173110_create_favourites_table (0.68 seconds)
